@@ -1,0 +1,54 @@
+{
+  "$schema": "https://hypar.io/Schemas/Function.json",
+  "id": "20ee48c0-b138-496e-b247-5b27776650fc",
+  "name": "UnitPacking",
+  "display_name": "Unit Packing",
+  "description": "Function for demonstrating how to fit unit widths into a building length",
+  "language": "C#",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "Unit Definitions": {
+        "$hyparCanPopOut": true,
+        "type": "array",
+        "$hyparOrder": 1,
+        "items": {
+          "$ref": "https://schemas.hypar.io/DummyUnit.json"
+        }
+      },
+      "Building Segment": {
+        "required": [
+          "Building Segment"
+        ],
+        "$ref": "https://hypar.io/Schemas/Geometry/Line.json"
+      },
+      "Length Tolerance": {
+        "type": "number",
+        "description": "How short the packed units can be from the building length",
+        "$hyparOrder": 2,
+        "default": 1,
+        "minimum": 0.125,
+        "multipleOf": 0.125,
+        "maximum": 6
+      },
+      "Selected Solution": {
+        "type": "integer",
+        "default": 1,
+        "minimum": 1
+      }
+    }
+  },
+  "outputs": [
+    {
+      "name": "Number of Solutions",
+      "description": "The number of solutions.",
+      "type": "number"
+    }
+  ],
+  "element_types": [
+    "https://schemas.hypar.io/DummyUnit.json"
+  ],
+  "repository_url": "https://github.com/hypar-io/function",
+  "last_updated": "0001-01-01T00:00:00",
+  "cli_version": "1.11.0-alpha.13"
+}
